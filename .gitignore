@@ -1,0 +1,14 @@
+.DS_Store
+node_modules/
+sheets/
+tools/pdfrender
+tools/gray
+dist/crops*.html
+dist/harness.html
+dist/shot.png
+dist/smoke*.html
+
+tools/pdftext
+dist/print.html
+tools/qr
+dist/fonts/

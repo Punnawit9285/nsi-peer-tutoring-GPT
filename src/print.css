@@ -1,0 +1,129 @@
+/* Student handout (print.js -> dist/print.html -> student.pdf). A4 portrait.
+   Screen and print use the same rules, so the concept-page fit measured on screen holds in print. */
+@page {
+  size: A4;
+  margin: 12mm 12mm 13mm;
+  @bottom-left { content: "Nervous System I · Peer tutoring · student handout"; font: 7.5pt "IBM Plex Mono", monospace; color: #6b7385; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 7.5pt "IBM Plex Mono", monospace; color: #6b7385; }
+}
+html, body { background: #fff; }
+body { margin: 0; font-size: 11px; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.sheet { width: 186mm; margin: 0 auto; }
+.muted { color: var(--ink2); font-weight: 400; }
+.eyebrow { font-size: .85em; margin-bottom: 6px; }
+.eyebrow .sp { flex: 1; }
+.chip { padding: 1px 7px; }
+h1 { font: 600 2.6em/1.1 var(--f-display); margin: 4px 0 10px; letter-spacing: .005em; }
+.lede { font-size: 1.15em; margin: 0 0 14px; max-width: 60em; }
+.minih { font: 600 .8em var(--f-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--ink2); margin: 18px 0 6px; }
+.note { font-size: .92em; color: var(--ink2); margin-top: 12px; }
+
+/* cover */
+.cover { padding-top: 24mm; }
+.cover h1 { font-size: 3.4em; }
+.cover .coverline { margin: 10px 0 26px; padding: 18px 0 20px; }
+.cover .counts { gap: 16mm; }
+.cover .counts b { font-size: 4.6em; }
+.cover .counts span { font-size: .95em; }
+.cover .qrlink img { width: 36mm; height: 36mm; }
+.cover .qrlink span { font-size: .85em; }
+.cover .qrlink .qrcap { font-size: 1em; }
+table.toc { width: 100%; border-collapse: collapse; font-size: 1em; }
+table.toc th { text-align: left; font: 600 .78em var(--f-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--ink2); border-bottom: 1.5px solid var(--ink); padding: 5px 6px; }
+table.toc td { border-bottom: 1px solid var(--rule); padding: 6px; white-space: nowrap; }
+table.toc td:first-child { white-space: normal; }
+.tid { font: 600 .95em var(--f-mono); color: var(--art); margin-right: 8px; }
+
+/* quizzes: no answers, two columns, right after their concept */
+.quiz { margin-top: 7mm; }
+.quizh { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; border-top: 2px solid var(--art); padding-top: 5px; margin-bottom: 8px; }
+.quizh .id { font: 600 .9em var(--f-mono); color: var(--art); }
+.quizh b { font: 600 1.15em var(--f-display); }
+.quizh .sp { flex: 1; }
+.quizh .muted { font: .85em var(--f-mono); }
+.qcols { columns: 2; column-gap: 7mm; column-rule: 1px solid var(--rule); }
+.secband { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; background: var(--sheet2); border-radius: 8px; padding: 6px 10px; margin-bottom: 10px; }
+.secband .id { font: 600 .85em var(--f-mono); color: var(--art); }
+.secband b { font: 600 1.15em var(--f-display); }
+.secband .muted { flex-basis: 100%; font-size: .9em; }
+.pq { break-inside: avoid; padding: 0 0 9px; margin: 0 0 9px; border-bottom: 1px dashed var(--rule); }
+.pqh { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font: .82em var(--f-mono); color: var(--ink2); margin-bottom: 2px; }
+.pqh b { font-size: 1.2em; color: var(--art); }
+.pqh .chip { font-size: .95em; }
+.pstem { font-weight: 500; line-height: 1.4; margin-bottom: 4px; }
+.pstem b { color: var(--art); }
+.pstem .muted { display: block; font-size: .9em; }
+.pfig { margin: 4px 0 5px; }
+.pfig figure { margin: 0; }
+.pfig img { max-width: 100%; height: auto; max-height: 62mm; width: auto; display: block; margin: 0 auto; }
+.pfig figcaption { display: none; }
+.popt { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.popt li { display: grid; grid-template-columns: auto 1fr; gap: 6px; align-items: baseline; }
+.L { display: inline-grid; place-items: center; width: 1.55em; height: 1.55em; border: 1px solid var(--ink2); border-radius: 50%; font: 600 .8em var(--f-mono); color: var(--ink2); flex: none; }
+.ptf { display: flex; gap: 22px; }
+.ptf > span { display: inline-flex; align-items: center; gap: 6px; }
+.plines i { display: block; height: 1.7em; border-bottom: 1px solid var(--rule); }
+
+/* concept pages: one per page, scaled to fit */
+.cpage { break-before: page; }
+.cfit { font-size: 12.5px; }
+.cfit h2 { font-size: 1.75em; margin-bottom: 8px; }
+.cfit .tpoints { margin-bottom: 10px; background: var(--ven-soft); border-left: 3px solid var(--ven); border-radius: 8px; padding: 7px 12px; }
+.cfit .tpoints .tp-head { font: 600 .75em var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--ven); margin-bottom: 2px; }
+.cfit .tpoints ul { margin: 0; padding-left: 1.2em; display: grid; gap: 2px; line-height: 1.45; }
+.cfit .cbody { gap: 12px; }
+.czb { display: inline-block; vertical-align: -0.28em; height: 1.3em; max-width: 100%; border-bottom: 1.5px solid var(--art); background: #fbf3f4; border-radius: 3px 3px 0 0; margin: 0 1px; position: relative; }
+.czb i { position: absolute; left: 2px; top: -1px; font: 600 .62em var(--f-mono); font-style: normal; color: var(--art); }
+.cfoot { margin: 10px 0 0; font: .8em var(--f-mono); color: var(--ink2); }
+
+/* answer key and Thai concept explanations */
+.part { break-before: page; padding-top: 20mm; }
+.aksec, .xsec { margin-top: 10px; }
+.part + .aksec, .part + .xsec { margin-top: 18px; }
+.akhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; border-bottom: 2px solid var(--ok); padding-bottom: 4px; margin-bottom: 8px; break-after: avoid; }
+.akhead .id { font: 600 .9em var(--f-mono); color: var(--ok); }
+.akhead b { font: 600 1.35em var(--f-display); }
+.acols, .xcols { columns: 2; column-gap: 7mm; column-rule: 1px solid var(--rule); }
+.ak { break-inside: avoid; margin: 0 0 7px; padding-bottom: 6px; border-bottom: 1px dashed var(--rule); }
+.akq { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 7px; }
+.akq > b { font: 600 1.05em var(--f-mono); color: var(--art); }
+.alet { display: inline-grid; place-items: center; min-width: 1.6em; height: 1.6em; padding: 0 3px; border-radius: 999px; background: var(--ok); color: #fff; font: 600 .82em var(--f-mono); }
+.atxt { font-weight: 600; color: var(--ok); }
+.ak ul { margin: 3px 0 0; padding-left: 1.15em; display: grid; gap: 2px; line-height: 1.5; }
+.ak p { margin: 3px 0 0; }
+.ak .model { font-size: .95em; }
+.ak .flag { margin-top: 4px; padding: 4px 8px; font-size: .9em; border-radius: 6px; }
+.akc { font: 600 1em var(--f-display); margin: 4px 0 5px; padding: 3px 0; border-bottom: 1px solid var(--rule); break-after: avoid; }
+.akc b { font-family: var(--f-mono); color: var(--art); margin-right: 6px; font-size: .9em; }
+.xc { margin: 0 0 10px; }
+.xch { font: 600 1.08em var(--f-display); break-after: avoid; margin-bottom: 3px; }
+.xch b { font-family: var(--f-mono); color: var(--art); margin-right: 6px; font-size: .9em; }
+.xc p { margin: 0 0 4px; line-height: 1.6; font-family: "IBM Plex Sans Thai", var(--f-body); orphans: 2; widows: 2; }
+.xc p b { font-weight: 600; }
+
+/* Pin the wide-screen concept layouts: the A4 page (~703 px) would otherwise trip the phone breakpoints
+   in base.css, so print would lay out differently from the on-screen fit measurement. No vh units either. */
+.cfit .two { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.cfit .cols2, .cfit .fgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cfit .cols3, .cfit .speeds { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cfit .figpair { grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); }
+.cfit .scan img { max-height: 440px; }
+.cfit .scan.tall img { max-height: 480px; }
+
+/* answers to the concept blanks */
+.bkcols { columns: 2; column-gap: 7mm; column-rule: 1px solid var(--rule); }
+.bk { break-inside: avoid; margin: 0 0 8px; }
+.bkh { font: 600 1em var(--f-display); margin-bottom: 2px; }
+.bkh b { font-family: var(--f-mono); color: var(--art); margin-right: 6px; font-size: .9em; }
+.bkl { margin: 0; line-height: 1.6; }
+.bka { margin-right: 8px; }
+.bka i { font: 600 .78em var(--f-mono); font-style: normal; color: #fff; background: var(--art); border-radius: 999px; padding: 0 5px; margin-right: 3px; }
+.bksec { margin-top: 10px; }
+.part + .bksec { margin-top: 18px; }
+.xkp { margin: 2px 0 6px; padding: 5px 10px 5px 1.6em; background: var(--ven-soft); border-left: 3px solid var(--ven); border-radius: 6px; line-height: 1.5; font-family: "IBM Plex Sans Thai", var(--f-body); break-inside: avoid; }
+
+/* a table too wide to sit beside its figure (see unclip() in print.js): one column, table full width, figure under it */
+.cfit .tstack.tstack { grid-template-columns: minmax(0, 1fr); }
+.cfit .tstack .scan img, .cfit .tstack .scan.tall img { max-height: 300px; }
+.xtx { margin: 0 0 4px; padding-left: 1.15em; display: grid; gap: 3px; line-height: 1.55; font-family: "IBM Plex Sans Thai", var(--f-body); }
+.xtx li { break-inside: avoid; }

@@ -1,0 +1,39 @@
+<div id="app" class="czopen">
+<header class="bar">
+  <div class="brand">
+    <svg viewBox="0 0 38 22" aria-hidden="true"><path d="M1,12 L9,12 L12,4 L16,19 L20,8 L23,12 L37,12" fill="none" stroke="var(--art)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div><b>Nervous System I</b><small>Peer tutoring · NS I deck (Tutor) &#183; สรุปคำอธิบายภาษาไทย</small></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+  <div class="ctrls">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="vPresent" aria-pressed="true">Present</button>
+      <button type="button" id="vBrowse" aria-pressed="false">Browse</button>
+    </div>
+    <label class="chk" for="coreOnly"><input type="checkbox" id="coreOnly"> Core only</label>
+    <label class="chk" for="follow" title="Jump to the card the student deck is showing (same browser)"><input type="checkbox" id="follow"> Follow student</label>
+    <a class="decklink" href="student.html" target="_blank" rel="noopener">Student deck &#8599;</a>
+    <button type="button" class="icon" id="themeBtn" aria-label="Switch between light and dark"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8,1.5 A6.5,6.5 0 0 1 8,14.5 Z" fill="currentColor"/></svg></button>
+    <button type="button" class="icon" id="fsBtn" aria-label="Full screen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1.5,5.5 V1.5 H5.5 M10.5,1.5 H14.5 V5.5 M14.5,10.5 V14.5 H10.5 M5.5,14.5 H1.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+<main>
+  <section id="present" aria-label="Present mode">
+    <div class="stage" id="stage"></div>
+    <div class="pager">
+      <button type="button" class="btn" id="prev">&#8592; Prev</button>
+      <div class="pos" id="pos" aria-live="polite"></div>
+      <button type="button" class="btn primary" id="next">Next &#8594;</button>
+      <div class="prog"><i id="progBar"></i></div>
+      <div class="keys">&#8592; &#8594; หรือ Space เลื่อนสไลด์ &#183; B สลับโหมด Browse &#183; คลิกที่ตัวเลือกเพื่อเทียบคำตอบ &#183; คลิกที่รูปเพื่อขยาย &#183; Follow student = เลื่อนตาม Student Deck</div>
+    </div>
+  </section>
+  <section id="browse" aria-label="Browse mode" hidden>
+    <div class="btools">
+      <input type="search" id="q" placeholder="ค้นหา: axon, skull, N1, baroreceptor&#8230;" aria-label="Search questions and concepts">
+      <span class="bcount" id="bcount"></span>
+    </div>
+    <div id="blist" class="showall"></div>
+  </section>
+</main>
+</div>
