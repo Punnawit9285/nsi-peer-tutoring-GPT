@@ -37,5 +37,14 @@ for(const [name,keys,valid] of [['THAI_Q',ctx.THAI_Q,qids],['THAI_CONCEPT',ctx.T
  for(const id of Object.keys(keys))if(!valid.has(id))errs.push(name+' orphan '+id);
  for(const id of valid)if(!(id in keys))errs.push(name+' missing '+id);
 }
+for(const s of S)for(const it of s.items)if(it.t==='c'){
+ const points=(ctx.THAI_CONCEPT[it.id]||[]).join(' ');
+ for(const match of it.html.matchAll(/class="cz"[^>]*data-ans="([^"]+)/g)){
+  const answer=match[1];
+  if(answer.length<4)continue;
+  const escaped=answer.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+  if(new RegExp('\\b'+escaped+'\\b','i').test(points))errs.push('key point reveals cloze '+it.id+' '+answer);
+ }
+}
 for(const s of S){const sc=ctx.TUTOR_SCRIPT.sec[s.id];if(!sc)errs.push('script section '+s.id);else for(const it of s.items)if((it.t==='c'||it.core)&&!sc.say[it.id])errs.push('SAY missing '+it.id)}
 console.log('TOTAL',JSON.stringify(totals),'errors:',errs.length?errs:'none');if(errs.length)process.exitCode=1;
