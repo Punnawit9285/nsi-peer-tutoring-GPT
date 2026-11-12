@@ -28,6 +28,7 @@ for(const s of S){let n={c:0,q:0,core:0,blanks:0,figures:0},seen=false,ci=0,qi=0
    }
    if(it.t==='tf'&&typeof it.a!=='boolean')errs.push('tf answer '+it.id);
    if(it.t==='open'&&!it.ans)errs.push('model answer '+it.id);
+   if(it.t==='open'&&it.core&&it.q.startsWith('Explain one key point'))errs.push('generic core prompt '+it.id);
   }else errs.push('bad type '+it.id);
  }
  if(!n.core)errs.push('no core question '+s.id);

@@ -6,7 +6,7 @@
 
 | Student deck | Tutor deck | Student handout |
 |---|---|---|
-| [student.html](https://punnawit9285.github.io/nsi-peer-tutoring/student.html) | [tutor.html](https://punnawit9285.github.io/nsi-peer-tutoring/tutor.html) | [student.pdf](https://punnawit9285.github.io/nsi-peer-tutoring/student.pdf?v=ec732ba6) |
+| [student.html](https://punnawit9285.github.io/nsi-peer-tutoring/student.html) | [tutor.html](https://punnawit9285.github.io/nsi-peer-tutoring/tutor.html) | [student.pdf](https://punnawit9285.github.io/nsi-peer-tutoring/student.pdf?v=4c325272) |
 
 Open both decks in the same browser and enable **Follow student** in the tutor deck to follow the student card.
 
