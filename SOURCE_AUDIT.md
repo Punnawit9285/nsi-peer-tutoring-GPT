@@ -52,5 +52,5 @@ This is a public review edition. All 30 attachments were inventoried. The 23 sec
 - 167 concepts, 283 questions, 145 core items, and 65 displayed figures. The source set is broader than the selected past-paper questions; this is a review edition rather than a verbatim transcription of every question in every paper.
 - Many concept explanations and tutor notes use short source-led English terminology within Thai sentences. They require editorial polish before recording.
 - The 217-page PDF uses ReportLab with embedded DejaVu and Noto Thai fonts; the requested Chrome/PDFKit and Bai Jamjuree/IBM Plex print-font path was unavailable in this Linux workspace.
-- Local Chrome and browser screenshot verification was unavailable because the browser could not open the local workspace. Validate the live pages at desktop and 390 px on a device before recording.
+- Local Chrome could not open the workspace. The live student and tutor pages were visually checked in a cloud browser at desktop width. A live 390 px iframe confirmed the student cadaveric card has no horizontal overflow; the tutor frame is provided beside it for review.
 - Images in the PDF and decks are cropped from attached teaching PDFs and spot tests. The public repo contains these crops, so review sharing permissions if needed.

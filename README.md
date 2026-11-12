@@ -10,6 +10,8 @@
 
 Open both decks in the same browser and enable **Follow student** in the tutor deck to follow the student card.
 
+The [390 px review frame](https://punnawit9285.github.io/nsi-peer-tutoring/tools/mobile-preview.html) shows both decks at phone width.
+
 ## Sections
 
 | ID | Section | Kind | Concepts | Questions | Core | Blanks | Figures | PDF body pages |
