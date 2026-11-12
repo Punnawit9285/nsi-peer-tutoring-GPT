@@ -53,6 +53,14 @@ def concept_text(it):
  rows=re.findall(r'<tr[^>]*>([\s\S]*?)</tr>',h)
  if rows:return [plain(x).replace('  ',' · ') for x in rows]
  return [plain(h.split('<figure')[0])]
+def back_key_points(it):
+ h=re.sub(r'\{\{([\s\S]*?)\}\}',lambda m:m.group(1),it['html'])
+ lines=re.findall(r'<li[^>]*>([\s\S]*?)</li>',h)
+ if not lines:
+  lines=re.findall(r'<td[^>]*>([\s\S]*?)</td>',h)
+ facts=[plain(line) for line in lines if plain(line)]
+ if not facts:facts=[it['title']]
+ return ['<b>ประเด็นหลัก</b> '+html.escape(fact) for fact in facts[:2]]
 UNITS=[]
 for s in S:
  u=None
@@ -209,7 +217,7 @@ class Renderer:
    self.block([f'<b>SECTION {s["id"]} · {html.escape(s["title"])}</b>'],'body','x-'+s['id'])
    for u in [u for u in UNITS if u['s'] is s]:
     it=u['c'];ls=[f'<b>{it["id"]} · p. {self.ref("k-"+it["id"])}</b>']
-    ls += TC.get(it['id'],[])[:3]+TX.get(it['id'],[])[:7]
+    ls += back_key_points(it)+TX.get(it['id'],[])[:7]
     self.block(ls,'thai','x-'+it['id'])
  def run(self):
   self.cover();last=None
